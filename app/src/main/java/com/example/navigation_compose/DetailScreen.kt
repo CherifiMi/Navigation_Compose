@@ -1,5 +1,6 @@
 package com.example.navigation_compose
 
+import android.os.Bundle
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,14 +16,16 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun DetailScreen(navController: NavController){
+fun DetailScreen(navController: NavController, args: Bundle?){
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+
+
 
         Text(
             modifier = Modifier.clickable {
                 navController.popBackStack()
             },
-            text = "Detail",
+            text = "${args?.getString("name")} ${args?.getInt("id")}",
             color = Color.Red,
             fontSize = MaterialTheme.typography.h1.fontSize,
             fontWeight = FontWeight.Bold)
